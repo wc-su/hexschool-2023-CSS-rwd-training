@@ -1,0 +1,124 @@
+.footer{
+  background: $bg-primary;
+  color: $color-white;
+  line-height: 1.5;
+  & > .container {
+    padding-top: 48px;
+    padding-bottom: 32px;
+  }
+}
+.footer-nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-menu{
+  display: flex;
+  gap: 48px;
+  & > li a {
+    color: inherit;
+    text-decoration: none;
+    line-height: 1.5;
+    &:hover {
+      border-bottom: 2px solid $bg-secondary;
+    }
+  }
+}
+.footer-icon-menu {
+  display: flex;
+  gap: 32px;
+  & > li a img {
+    display: block;
+    width: 48px;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+.footer-contact {
+  padding-top: 24px;
+}
+.footer-contact li {
+  & a {
+    color: inherit;
+    text-decoration: none;
+    & > span {
+      vertical-align: top;
+    }
+    & > .material-icons-outlined {
+      font-size: 3.375rem;
+      margin-right: 24px;
+    }
+    & > span:not(.material-icons-outlined) {
+      font-size: 2.25rem;
+      line-height: 1.5;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+.footer-copyright {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid $color-white;
+  padding-top: 32px;
+  margin-top: 32px;
+}
+.footer-terms {
+  display: flex;
+  gap: 48px;
+  & a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      border-bottom: 2px solid $bg-secondary;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .footer-nav{
+    flex-wrap: wrap;
+  }
+  .footer-icon-menu {
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .footer-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .footer-menu {
+    display: none;
+  }
+  .footer-icon-menu {
+    gap: 8px;
+    & > li a img {
+      width: 24px;
+    }
+  }
+  .footer-contact li {
+    & a {
+      & > .material-icons-outlined {
+        font-size: 1.5rem;
+        margin-right: 11px;
+      }
+      & > span:not(.material-icons-outlined) {
+        font-size: 1rem;
+      }
+    }
+  }
+  .footer-copyright {
+    flex-wrap: wrap;
+  }
+  .footer-terms {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+  }
+}
