@@ -1,54 +1,80 @@
-.nav{
+.nav {
   background: $bg-primary;
   & > .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    @include respond-to("sm") {
+      flex-wrap: wrap;
+    }
   }
 }
-.nav-logo a {
-  display: block;
-  width: 80px;
-  height: 49px;
-  background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/logo-white.png?raw=true) no-repeat center/contain;
-  &:hover {
-    opacity: 0.6;
+.nav-logo {
+  & a {
+    display: block;
+    width: 80px;
+    height: 48px;
+    background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/logo-white.png?raw=true)
+      no-repeat center/contain;
+    &:hover {
+      opacity: 0.6;
+    }
   }
 }
 .nav-menu {
   display: flex;
   gap: 64px;
+  @include respond-to("sm") {
+    flex-wrap: wrap;
+    gap: 0;
+    width: 100%;
+  }
 }
-.nav-item a {
-  display: block;
-  color: $color-white;
-  text-decoration: none;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  &:hover {
-    color: $bg-primary;
-    background-color: $bg-secondary;
+.nav-item {
+  & a {
+    display: block;
+    color: $color-white;
+    text-decoration: none;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    &:hover {
+      color: $bg-primary;
+      background-color: $bg-secondary;
+    }
+  }
+  @include respond-to("sm") {
+    width: 50%;
+    & > a {
+      text-align: center;
+      border: 1px solid $color-white;
+      padding: 12px 0;
+    }
   }
 }
 
 .header {
   text-align: right;
-  background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-header.png?raw=true) no-repeat center/cover;
+  background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-header.png?raw=true)
+    no-repeat center/cover;
   color: $color-primary;
   line-height: 1.5;
-  & > .container {
-    padding-top: 296px;
-    padding-bottom: 296px;
+  @include respond-to("md") {
+    background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-header-sm.png?raw=true)
+      no-repeat center/cover;
   }
 }
 .header-title {
   font-size: 4rem;
   font-weight: 700;
+  @include respond-to("sm") {
+    font-size: 1.5rem;
+  }
 }
 .header-sub-title {
   font-size: 2.25rem;
+  @include respond-to("sm") {
+    font-size: 1rem;
+  }
 }
 .header-link {
   display: inline-block;
@@ -60,44 +86,5 @@
   margin-top: 4px;
   &:hover {
     background: $color-primary;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-header-sm.png?raw=true) no-repeat center/cover;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .nav > .container{
-    flex-wrap: wrap;
-    padding: 0;
-  }
-  .nav-logo {
-    padding: 16px 0 16px 15px;
-  }
-  .nav-menu {
-    flex-wrap: wrap;
-    gap: 0;
-    width: 100%;
-  }
-  .nav-item {
-    width: 50%;
-    & > a {
-      text-align: center;
-      border: 1px solid $color-white;
-      padding: 12px 0;
-    }
-  }
-  .header  > .container {
-    padding-top: 144px;
-    padding-bottom: 144px;
-  }
-  .header-title {
-    font-size: 1.5rem;
-  }
-  .header-sub-title {
-    font-size: 1rem;
   }
 }

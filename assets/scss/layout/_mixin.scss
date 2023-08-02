@@ -1,0 +1,71 @@
+$space-prefixes : (
+  p  : padding,
+  pt : padding-top,
+  pr : padding-right,
+  pb : padding-bottom,
+  pl : padding-left,
+  px: (padding-left, padding-right),
+  py: (padding-top, padding-bottom),
+  m  : margin,
+  mt : margin-top,
+  mr : margin-right,
+  mb : margin-bottom,
+  ml : margin-left,
+  mx: (margin-left, margin-right),
+  my: (margin-top, margin-bottom)
+) !default;
+
+// https://gist.github.com/Eomerx/d69ccaf5fec88040b431
+@mixin make-space($values, $prefixes, $breakpoints) {
+  @each $breakpoint-name, $breakpoint-value in $breakpoints {
+    @if($breakpoint-value > 992) {
+      @each $attr-short, $attr-long in $prefixes {
+        @each $value in $values {
+          .#{$attr-short}-#{$value} {
+            @each $attr in $attr-long {
+              @if($value == auto) {
+                #{$attr}: #{$value};
+              }
+              @else {
+                #{$attr}: #{$value}#{'px'};
+              }
+            }
+          }
+        }
+      }
+    }
+    @else {
+      @media (max-width: $breakpoint-value) {
+        @each $attr-short, $attr-long in $prefixes {
+          @each $value in $values {
+            .#{$breakpoint-name}-#{$attr-short}-#{$value} {
+              @each $attr in $attr-long {
+                @if($value == auto) {
+                  #{$attr}: #{$value};
+                }
+                @else {
+                  #{$attr}: #{$value}#{'px'};
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

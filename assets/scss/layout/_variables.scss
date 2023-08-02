@@ -1,0 +1,42 @@
+$max-width: 1296px;
+$container-padding-x: 12px;
+$container-md-padding-x: 36px;
+
+$bg-primary: #aa0601;
+$bg-secondary: #fbf2f2;
+$color-primary: #650300;
+$color-white: #fff;
+$color-black: #000;
+$color-darker: #707070;
+$color-shadow: #dee2e6;
+$color-shadow-darker: #00000029;
+
+$space-values : (
+  0,
+  3,
+  8,
+  9,
+  12,
+  16,
+  20,
+  22,
+  24,
+  32,
+  36,
+  40,
+  48,
+  72,
+  80,
+  144,
+  296,
+  auto
+) !default;
+
+$breakpoints: (
+  // Large devices (desktops, less than 1200px)
+  lg: 1199.98px,
+  // Medium devices (tablets, less than 992px)
+  md: 991.98px,
+  // Small devices (landscape phones, less than 768px)
+  sm: 767.98px
+) !default;

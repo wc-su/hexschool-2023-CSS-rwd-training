@@ -1,7 +1,4 @@
 section .container {
-  padding-top: 80px;
-  padding-bottom: 80px;
-
   text-align: center;
   line-height: 1.5;
   & h3 {
@@ -19,7 +16,10 @@ section .container {
   display: flex;
   justify-content: space-around;
   gap: 1%;
-  margin-top: 33px;
+  @include respond-to("md") {
+    flex-wrap: wrap;
+    gap: 2%;
+  }
 }
 .promote-item {
   width: 24%;
@@ -27,17 +27,27 @@ section .container {
   img {
     width: 84px;
   }
+  @include respond-to("md") {
+    width: 49%;
+  }
 }
 .promote-item-title {
   font-size: 24px;
   font-weight: 700;
-  margin: 24px 0 8px 0;
+}
+.promote-item-content {
+  color: $color-black;
+  text-align: start;
 }
 
 .basic-list {
   display: flex;
   justify-content: space-around;
-  margin-top: 48px;
+  @include respond-to("md") {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
 }
 .basic-item {
   width: 32%;
@@ -47,10 +57,14 @@ section .container {
     font-weight: 700;
     font-style: italic;
   }
+  @include respond-to("md") {
+    width: 49%;
+  }
 }
 
 .co-branding {
-  background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/index-bg.png?raw=true) no-repeat center/cover;
+  background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/index-bg.png?raw=true)
+    no-repeat center/cover;
   .container h3 {
     color: $color-white;
   }
@@ -58,6 +72,10 @@ section .container {
 .co-branding-list {
   display: flex;
   margin-top: 48px;
+  @include respond-to("md") {
+    flex-direction: column;
+    gap: 24px;
+  }
 }
 .co-branding-item {
   img {
@@ -76,23 +94,36 @@ section .container {
   text-align: left;
   display: flex;
   justify-content: space-around;
-  margin-top: 48px;
   gap: 2%;
+  @include respond-to("md") {
+    flex-wrap: wrap;
+  }
 }
+
 .recommend-item {
   width: 23%;
   border: 1px solid $color-shadow;
   box-shadow: 0px 2px 6px $color-shadow-darker;
   border-radius: 4px;
-  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  @include respond-to("md") {
+    width: 48%;
+  }
+  @include respond-to("sm") {
+    width: 98%;
+  }
 }
-.recommend-item-content {
-  padding: 16px;
+.recommend-content {
+  height: 205px;
+  display: flex;
+  flex-direction: column;
 }
 .recommend-content-name {
-  margin-bottom: 8px;
+  font-weight: 500;
 }
 .recommend-content-date {
   color: $color-darker;
-  margin-top: 72px;
+  margin-top: auto;
 }
