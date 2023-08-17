@@ -108,7 +108,35 @@
   </section>
   <section>
     <div class="container py-80">
-      <h3>聯絡我們</h3>
+      <div class="contact">
+        <h3>聯絡我們</h3>
+        <p>我們相當重視您的意見，若您有任何疑問，可先參考「常見問題」，若仍有任何問題，請填妥以下資料，我們會在近期與您聯繫。</p>
+        <form action="#" method="post" class="contact-form">
+          <div class="form-group mb-16">
+            <label for="name" class="form-label mb-8">姓名</label>
+            <input type="text" class="form-control px-12 py-6" name="name" id="name" placeholder="陳小明" required>
+          </div>
+          <div class="form-group mb-16">
+            <label for="tel" class="form-label mb-8">聯絡電話</label>
+            <input type="tel" class="form-control px-12 py-6" name="tel" id="tel" placeholder="0912-345-678" required>
+          </div>
+          <div class="form-group mb-16">
+            <label for="email" class="form-label mb-8">電子郵件</label>
+            <input type="email" class="form-control px-12 py-6" name="email" id="email" placeholder="example@email.com" required>
+          </div>
+          <div class="form-group mb-16">
+            <label for="feedback" class="form-label mb-8">意見反應</label>
+            <textarea name="feedback" class="form-control px-12 py-6" id="feedback" cols="30" rows="10" placeholder="請輸入您的意見"></textarea>
+          </div>
+          <div>
+            <input type="checkbox" class="form-control" name="" id="check" required>
+            <label for="check">我同意隱私權政策，並同意依隱私權政策中所述的方式處理自己的資料。</label>
+          </div>
+          <div class="form-submit">
+            <input type="submit" class="contact-submit px-176 py-16 mt-48" value="確認送出">
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 </main>

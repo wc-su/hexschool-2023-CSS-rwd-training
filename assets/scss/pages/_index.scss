@@ -164,3 +164,55 @@ section .container {
   color: $color-darker;
   margin-top: auto;
 }
+
+.contact {
+  max-width: 636px;
+  margin: 0 auto;
+  text-align: left;
+  h3 {
+    text-align: center;
+  }
+  p {
+    margin-top: 48px;
+  }
+}
+.contact-form {
+  margin-top: 24px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-control {
+  outline: none;
+  border: 1px solid $color-black;
+  transition: 0.2s;
+}
+textarea.form-control {
+  resize: vertical;
+}
+.form-control[type="checkbox"] {
+  border-width: 2px;
+  border-color: yellow;
+}
+.form-control:focus {
+  border-color: $bg-primary;
+  box-shadow: 0px 0px 3px $color-darker;
+}
+.form-submit {
+  text-align: center;
+}
+.contact-submit {
+  background: $bg-primary;
+  color: $color-white;
+  font-weight: 900;
+  outline: none;
+  border: 1px solid $bg-primary;
+  cursor: pointer;
+  text-align: center;
+  transition: .2s;
+  &:hover {
+    background: $bg-secondary;
+    color: $bg-primary;
+  }
+}
