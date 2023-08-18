@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Roboto:wght@400;700&display=swap');
 
-@import './layout/reset.scss';
 
-@import './layout/variables.scss';
-@import './layout/mixin.scss';
-@import './layout/common.scss';
+@import './base/variables';
+@import './utils/mixin';
 
-@import './layout/nav.scss';
-@import './layout/footer.scss';
+@import './base/reset';
+@import './base/base';
+@import './layout/container';
 
-@import './pages/index.scss';
-@import './pages/qa.scss';
+@import './utils/utilities';
+
+
+@import './layout/nav';
+@import './layout/footer';
+
+@import './components/link-hover';
+
+@import './pages/index';
+@import './pages/qa';

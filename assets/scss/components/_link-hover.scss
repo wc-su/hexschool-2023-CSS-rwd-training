@@ -1,0 +1,16 @@
+.link-hover {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: -1px;
+    width: 0;
+    height: 2px;
+    background: $color-white;
+    transition: 0.3s;
+  }
+  &:hover::before {
+    width: calc(100% + 2px);
+  }
+}

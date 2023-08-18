@@ -1,20 +1,3 @@
-$space-prefixes : (
-  p  : padding,
-  pt : padding-top,
-  pr : padding-right,
-  pb : padding-bottom,
-  pl : padding-left,
-  px: (padding-left, padding-right),
-  py: (padding-top, padding-bottom),
-  m  : margin,
-  mt : margin-top,
-  mr : margin-right,
-  mb : margin-bottom,
-  ml : margin-left,
-  mx: (margin-left, margin-right),
-  my: (margin-top, margin-bottom)
-) !default;
-
 // https://gist.github.com/Eomerx/d69ccaf5fec88040b431
 @mixin make-space($values, $prefixes, $breakpoints) {
   @each $breakpoint-name, $breakpoint-value in $breakpoints {
@@ -38,7 +21,7 @@ $space-prefixes : (
       @media (max-width: $breakpoint-value) {
         @each $attr-short, $attr-long in $prefixes {
           @each $value in $values {
-            .#{$breakpoint-name}-#{$attr-short}-#{$value} {
+            .#{$attr-short}-#{$breakpoint-name}-#{$value} {
               @each $attr in $attr-long {
                 @if($value == auto) {
                   #{$attr}: #{$value};

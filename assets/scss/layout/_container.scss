@@ -1,0 +1,12 @@
+.container {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 $container-padding-x;
+  @include respond-to("md") {
+    padding: 0 $container-md-padding-x;
+  }
+  @include respond-to("sm") {
+    padding: 0 $container-padding-x;
+  }
+}
