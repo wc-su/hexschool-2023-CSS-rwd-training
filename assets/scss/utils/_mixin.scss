@@ -1,54 +1,112 @@
-// https://gist.github.com/Eomerx/d69ccaf5fec88040b431
-@mixin make-space($values, $prefixes, $breakpoints) {
-  @each $breakpoint-name, $breakpoint-value in $breakpoints {
-    @if($breakpoint-value > 992) {
-      @each $attr-short, $attr-long in $prefixes {
-        @each $value in $values {
-          .#{$attr-short}-#{$value} {
-            @each $attr in $attr-long {
-              @if($value == auto) {
-                #{$attr}: #{$value};
-              }
-              @else {
-                #{$attr}: #{$value}#{'px'};
-              }
-            }
-          }
-        }
-      }
+// copy from BS mixins
+
+// breakpoints
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: map-get($breakpoints, $name);
+  @return if($max and $max > 0, $max - .02, null);
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-max($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
     }
-    @else {
-      @media (max-width: $breakpoint-value) {
-        @each $attr-short, $attr-long in $prefixes {
-          @each $value in $values {
-            .#{$attr-short}-#{$breakpoint-name}-#{$value} {
-              @each $attr in $attr-long {
-                @if($value == auto) {
-                  #{$attr}: #{$value};
-                }
-                @else {
-                  #{$attr}: #{$value}#{'px'};
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+  } @else {
+    @content;
   }
 }
 
-@mixin respond-to($breakpoint) {
-  // If the key exists in the map
-  @if map-has-key($breakpoints, $breakpoint) {
-    // Prints a media query based on the value
-    @media (max-width: map-get($breakpoints, $breakpoint)) {
-      @content;
-    }
+// utilities
+@mixin generate-utility($utility, $infix: "") {
+  $values: map-get($utility, values);
+
+  // If the values are a list or string, convert it into a map
+  @if type-of($values) == "string" or type-of(nth($values, 1)) != "list" {
+    $values: zip($values, $values);
   }
-  // If the key doesn't exist in the map
-  @else {
-    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-          + "Available breakpoints are: #{map-keys($breakpoints)}.";
+
+  @each $key, $value in $values {
+    $properties: map-get($utility, property);
+
+    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+    @if type-of($properties) == "string" {
+      $properties: append((), $properties);
+    }
+
+    // Use custom class if present
+    $property-class: if(
+      map-has-key($utility, class),
+      map-get($utility, class),
+      nth($properties, 1)
+    );
+    $property-class: if($property-class == null, "", $property-class);
+
+    // Use custom CSS variable name if present, otherwise default to `class`
+    $css-variable-name: if(
+      map-has-key($utility, css-variable-name),
+      map-get($utility, css-variable-name),
+      map-get($utility, class)
+    );
+
+    // State params to generate pseudo-classes
+    $state: if(map-has-key($utility, state), map-get($utility, state), ());
+
+    $infix: if(
+      $property-class == "" and str-slice($infix, 1, 1) == "-",
+      str-slice($infix, 2),
+      $infix
+    );
+
+    // Don't prefix if value key is null (e.g. with shadow class)
+    $property-class-modifier: if($key, if($property-class == "" and $infix == "", "", "-") + $key, "");
+
+    $is-css-var: map-get($utility, css-var);
+    $is-local-vars: map-get($utility, local-vars);
+
+    @if $value != null {
+
+      @if $is-css-var {
+        .#{$property-class + $infix + $property-class-modifier} {
+          #{$css-variable-name}: #{$value};
+        }
+
+        @each $pseudo in $state {
+          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+            #{$css-variable-name}: #{$value};
+          }
+        }
+      } @else {
+        .#{$property-class + $infix + $property-class-modifier} {
+          @each $property in $properties {
+            @if $is-local-vars {
+              @each $local-var, $variable in $is-local-vars {
+                #{$local-var}: #{$variable};
+              }
+            }
+            #{$property}: $value
+              if($enable-important-utilities, !important, null);
+          }
+        }
+
+        @each $pseudo in $state {
+          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+            @each $property in $properties {
+              @if $is-local-vars {
+                @each $local-var, $variable in $is-local-vars {
+                  #{$local-var}: #{$variable};
+                }
+              }
+              #{$property}: $value
+                if($enable-important-utilities, !important, null);
+            }
+          }
+        }
+      }
+    }
   }
 }

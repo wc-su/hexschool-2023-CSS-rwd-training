@@ -1,94 +1,35 @@
-.footer {
-  background: $bg-primary;
-  color: $color-white;
-  line-height: 1.5;
-}
-.footer-reverse {
-  @include respond-to("sm") {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
-}
-.footer-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @include respond-to("sm") {
-    align-self: start;
-  }
-}
 .footer-menu {
-  display: flex;
   gap: 48px;
-  & > li a {
-    color: inherit;
-    text-decoration: none;
-    line-height: 1.5;
-  }
-  @include respond-to("sm") {
-    display: none;
-  }
 }
 .footer-icon-menu {
-  display: flex;
   gap: 32px;
   & > li a img {
-    display: block;
     width: 48px;
     &:hover {
       opacity: 0.6;
     }
   }
-  @include respond-to("md") {
+  @include media-breakpoint-down("md") {
     gap: 16px;
+    & > li a img {
+      width: 40px;
+    }
   }
-  @include respond-to("sm") {
+  @include media-breakpoint-down("sm") {
     gap: 8px;
     & > li a img {
       width: 24px;
     }
   }
 }
-.footer-contact li a {
-  color: inherit;
-  text-decoration: none;
-  font-size: 36px;
-  & > .material-icons-outlined {
-    font-size: inherit;
-  }
-  & > span:not(.material-icons-outlined) {
-    vertical-align: top;
-    line-height: 1.5;
-  }
-  &:hover {
-    opacity: 0.8;
-  }
-  @include respond-to("sm") {
-    font-size: 16px;
-    & > .material-icons-outlined {
-      font-size: 18px;
-    }
-  }
+
+.footer-contact-link:hover {
+  opacity: 0.8;
 }
-.footer-copyright {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid $color-white;
-  @include respond-to("sm") {
-    flex-direction: column;
-    gap: 8px;
-  }
-}
+
 .footer-terms {
-  display: flex;
   gap: 48px;
-  & a {
-    color: inherit;
-    text-decoration: none;
-  }
-  @include respond-to("sm") {
-    flex-direction: column;
+  @include media-breakpoint-down("sm") {
     gap: 8px;
   }
 }

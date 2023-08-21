@@ -1,49 +1,24 @@
-.nav {
-  background: $bg-primary;
-  & > .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    @include respond-to("sm") {
-      flex-wrap: wrap;
-    }
-  }
-}
-.nav-logo {
-  & a {
-    display: block;
-    width: 80px;
-    height: 48px;
-    background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/logo-white.png?raw=true)
-      no-repeat center/contain;
-    &:hover {
-      opacity: 0.6;
-    }
+.nav-logo-link {
+  width: 80px;
+  height: 48px;
+  background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/logo-white.png?raw=true)
+    no-repeat center/contain;
+  &:hover {
+    opacity: 0.6;
   }
 }
 .nav-menu {
-  display: flex;
   gap: 64px;
-  @include respond-to("sm") {
-    flex-wrap: wrap;
+  @include media-breakpoint-down("sm") {
     gap: 0;
-    width: 100%;
   }
 }
-.nav-item {
-  & a {
-    display: block;
-    color: $color-white;
-    text-decoration: none;
-    font-size: 1.25rem;
-    line-height: 1.5;
-  }
-  @include respond-to("sm") {
-    width: 50%;
-    & > a {
-      text-align: center;
-      border: 1px solid $color-white;
-      padding: 12px 0;
+.nav-item-link:hover {
+  @include media-breakpoint-down("sm") {
+    background: $white;
+    color: $secondary-darker !important;
+    &::before {
+      content: none;
     }
   }
 }

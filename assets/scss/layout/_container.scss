@@ -3,10 +3,10 @@
   margin-left: auto;
   margin-right: auto;
   padding: 0 $container-padding-x;
-  @include respond-to("md") {
+  @include media-breakpoint-down("md") {
     padding: 0 $container-md-padding-x;
   }
-  @include respond-to("sm") {
+  @include media-breakpoint-down("sm") {
     padding: 0 $container-padding-x;
   }
 }
