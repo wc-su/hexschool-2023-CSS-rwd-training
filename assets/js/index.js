@@ -7,8 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 //   order: 順向進入(onEnter)、順向離開(onLeave)、逆向進入(onEnterBack)、逆向離開(onLeaveBack)
 //   value: play, pause, resume, reset, restart, complete, reverse, none
 const toggleActions = {
-//   toggleActions: "play pause resume reset"
-  toggleActions: "restart none none none"
+  toggleActions: "play pause resume reset"
 };
 
 // 推銷
