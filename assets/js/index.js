@@ -32,10 +32,10 @@ mm.add(
         ...toggleActions,
       },
     });
-    if (isDesktop) {
+    if (isDesktop || isMobile) {
       promoteTimeline
         .from(".promote h3", { y: 100, opacity: 0, duration: 0.6 })
-        .from(".promote-item", {y: "random(80, 120)", opacity: 0, duration: 0.8,});
+        .from(".promote-item", {y: "random(80, 120)", opacity: 0, duration: 0.8, stagger: isMobile ? 0.8: 0 });
     } else {
       promoteTimeline
         .from(".promote h3", { y: 100, opacity: 0, duration: 0.6 })
@@ -76,7 +76,7 @@ mm.add(
     if(isMobile) {
       recommendTimeline
       .from(".recommend h3", { y: 100, opacity: 0, duration: 0.6 })
-      .from(".recommend-item", { y: 80, opacity: 0, duration: 0.8, stagger: isDesktop ? 0 : 0.8 });
+      .from(".recommend-item", { y: 80, opacity: 0, duration: 0.8, stagger: 0.8 });
     } else {
       recommendTimeline
         .from(".recommend h3", { y: 100, opacity: 0, duration: 0.6 })
