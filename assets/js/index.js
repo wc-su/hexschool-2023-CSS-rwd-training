@@ -63,8 +63,8 @@ mm.add(
     });
     brandingTimeline
       .from(".co-branding h3", { y: 100, opacity: 0, duration: 0.6 })
-      .from(".co-branding-item:nth-child(1)", { x: isDesktop ? 50 : 0, y: 50, opacity: 0, duration: 0.6, })
-      .from(".co-branding-item:nth-child(2)", { x: isDesktop ? -50 : 0, y: -50, opacity: 0, duration: 0.6, }, isDesktop ? "-=0.6" : null);
+      .from(".co-branding-item:nth-child(1)", { x: 50, y: 50, opacity: 0, duration: 0.6, })
+      .from(".co-branding-item:nth-child(2)", { x: -50, y: -50, opacity: 0, duration: 0.6, }, isDesktop ? "-=0.6" : null);
 
     // 顧客推薦
     const recommendTimeline = gsap.timeline({
